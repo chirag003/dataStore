@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "9991bcb3-a611-4ce2-b009-4300f0bb553c",
+		"name": "dataStore",
+		"description": "Heady Backend Developer SAT\n\nThe Task is Building a RESTful APIs from scratch using Express - Node.js. The Entities are a “Categories” and “Products”. Category can have multiple child categories. Child category can have further child categories. Category can have multiple products and product can have a multiple categories. The Entities must get saved in MongoDb and be retrieved via POST and GET Methods respectively. Also, the candidate must be aware of HTTP Verbs and their significance in RESTful APIs. You need to design a proper Mongodb data model and create APIs to\n\n- Add a category\n- Add Product mapped to a category or categories.\n- Get all categories with all its child categories mapped to it. Note : Each category object should look something   like this {Id : 1 , child_categories: [], ...}\n- Get all products by a category.\n- Update product details (name,price,etc)\n\nStack: Express Node.js, Mongodb\nTime Frame: 5 days. Source Code Sharing: Please share the code on any public Git repository",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET Categories",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/category",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"category"
+					]
+				},
+				"description": "Get all categories with all its child categories mapped to it. Note : Each category object should look something like this {Id : 1 , child_categories: [], ...}"
+			},
+			"response": []
+		},
+		{
+			"name": "GET Products by CategoryID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/product/5e7c580af7bc491e7198911a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"5e7c580af7bc491e7198911a"
+					]
+				},
+				"description": "Get all products by a category."
+			},
+			"response": []
+		},
+		{
+			"name": "POST Category",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"categoryName\": \"Nonveg\",\n    \"parentName\": \"Food\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/addCategory/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"addCategory",
+						""
+					]
+				},
+				"description": "Add a category"
+			},
+			"response": []
+		},
+		{
+			"name": "POST Product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productName\": \"Pizza\",\n    \"price\": \"420\",\n    \"categories\": [\n        \"5e7c580af7bc491e7198911a\"\n    ],\n    \"description\": \"A large BBQ CHICKEN PIZZA\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/addProduct/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"addProduct",
+						""
+					]
+				},
+				"description": "Add Product mapped to a category or categories."
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productName\": \"Pizza\",\n    \"price\": \"320\",\n    \"categories\": [\n        \"5e7c61ef963d50214a7dd8e3\"\n    ],\n    \"description\": \"Smokey Hot Chicken Pizza\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/product/5e7c5a889202611f7b445cf1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"5e7c5a889202611f7b445cf1"
+					]
+				},
+				"description": "Update product details (name,price,etc)"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "6622a1d1-3824-470d-bc12-6cb8bd6a272e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "41ba1f76-b680-4eb2-88d6-43a86c1b6ea9",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
